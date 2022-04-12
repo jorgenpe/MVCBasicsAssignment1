@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <h3>Logo</h3>
+        <nav>
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index" >Home</a>
+                </li>
+                <li>
+                    <a asp-controller="About" asp-action="Index" >About</a>
+                </li>
+                <li>
+                    <a asp-controller="Contact" asp-action="Index" >Contact</a>
+                </li>
+                <li>
+                    <a asp-controller="Projects" asp-action="Index" >Projects</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    
+     <footer>
+        <p>&copy; Jörgen P.   @DateTime.Now.ToShortDateString() @DateTime.Now.ToShortTimeString()  </p>
+        
+    
+    </footer>
+</body>
+</html>

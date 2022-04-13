@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Info - Information";
+}
+<h3>My contact infomation</h3>
+
+<table>
+    
+    <tbody>
+        @foreach (string[] gitHubLink in ViewBag.GitHubLinks)
+        {
+            <tr>
+                <td>
+                    <a href="@gitHubLink[0]" >@gitHubLink[0]</a>
+                </td>
+            </tr>
+            <tr>
+                <td>@gitHubLink[1]</td>
+            </tr>
+        }
+    </tbody>
+</table>

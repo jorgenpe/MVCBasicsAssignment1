@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "FeverCheck - CheckFever";
+}
+
+<h1>Check fever</h1>
+
+@if (ViewBag.ExceptionMsg != null)
+{
+    <h4 class="danger">@ViewBag.ExceptionMsg</h4>
+}
+
+<form asp-action="CheckFever" method="post">
+    <label for="Fever">Fever: </label>
+    <input type="number" step="0.1" name="fever" id="fever" value="@ViewBag.Fever"  />
+    <button type="submit">Check fever</button>
+
+</form>

@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Guessing game";
+}
+
+<h1>Guessing game</h1>
+
+
+@if (ViewBag.ExceptionMsg != null)
+{
+    <h4 class="danger">@ViewBag.ExceptionMsg</h4>
+}
+
+<form asp-action="GuessGame" method="post">
+    <input type="number" name="guessGame" value="" placeholder="Guess number between 1-100" />
+    <input type="submit"  value="Guessing game" />
+</form>
+
+<ul>
+    @if (ViewBag.GuessGames != null && ViewBag.GuessGames is string)
+    {
+        string[] guessGameArray = (ViewBag.GuessGames as string).Split('|');
+
+        if(guessGameArray[0] == "Victory")
+        {
+            <li>
+                <p>. You are victorious</p>
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GuessGame", "Game")'" >Reset Game</button> 
+            </li>
+        } 
+        else{
+            for (int i = 1; i < guessGameArray.Length; i++)
+            {
+                if(int.Parse(guessGameArray[0]) < int.Parse(guessGameArray[i]))
+                {
+                    <li>
+                        <p>@guessGameArray[i] is the wrong number. The number is lower.</p>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <p>@guessGameArray[i] is the wrong number.The number is higher.</p>
+                    </li>   
+                }  
+
+            }
+
+        }
+    }
+    else
+    {
+        <li><p>Please guess a number!</p></li>
+    }
+</ul>

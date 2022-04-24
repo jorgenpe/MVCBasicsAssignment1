@@ -17,11 +17,22 @@ namespace MVCBasicsAssignment1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+         
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -29,15 +40,21 @@ namespace MVCBasicsAssignment1
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
-                
 
                 endpoints.MapControllerRoute(
                     name: "FeverCheck",
                     pattern: "/Doctor/CheckFever", //comper to uri/url
                     defaults: new { controller = "Doctor", action = "CheckFever" }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "GuessingGame",
+                    pattern: "/GuessingGame", //comper to uri/url
+                    defaults: new { controller = "Game", action = "GuessGame" }
                 );
                 endpoints.MapControllerRoute(
                     name: "default",

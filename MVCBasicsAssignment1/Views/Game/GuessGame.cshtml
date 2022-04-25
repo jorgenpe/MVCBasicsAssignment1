@@ -12,7 +12,7 @@
 }
 
 <form asp-action="GuessGame" method="post">
-    <input type="number" name="guessGame" value="" step="1" placeholder="Guess number between 1-100" />
+    <input type="number" name="guessGame" value="" step="1" min="1" max="100" placeholder="Guess number between 1-100" />
     <input type="submit"  value="Guessing game" />
 </form>
 

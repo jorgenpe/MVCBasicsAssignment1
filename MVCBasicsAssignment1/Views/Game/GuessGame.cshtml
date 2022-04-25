@@ -12,7 +12,7 @@
 }
 
 <form asp-action="GuessGame" method="post">
-    <input type="number" name="guessGame" value="" placeholder="Guess number between 1-100" />
+    <input type="number" name="guessGame" value="" step="1" placeholder="Guess number between 1-100" />
     <input type="submit"  value="Guessing game" />
 </form>
 
@@ -35,17 +35,19 @@
                 {
                     <li>
                         <p>@guessGameArray[i] is the wrong number. The number is lower.</p>
+                        
                     </li>
                 }
                 else
                 {
                     <li>
                         <p>@guessGameArray[i] is the wrong number.The number is higher.</p>
+                        
                     </li>   
                 }  
 
             }
-
+            <p>Please guess a new number between 1-100!</p>
         }
     }
     else

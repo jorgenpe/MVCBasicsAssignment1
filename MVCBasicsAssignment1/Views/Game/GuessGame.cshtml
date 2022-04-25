@@ -24,7 +24,7 @@
         if(guessGameArray[0] == "Victory")
         {
             <li>
-                <p>. You are victorious</p>
+                <p> You are victorious</p>
                 <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GuessGame", "Game")'" >Reset Game</button> 
             </li>
         } 
@@ -47,7 +47,9 @@
                 }  
 
             }
-            <p>Please guess a new number between 1-100!</p>
+            <li>
+                <p>Please guess a new number between 1-100!</p>
+            </li>
         }
     }
     else
